@@ -1,36 +1,25 @@
-import login
+import OLDlogin
 
 import requests
 from bs4 import BeautifulSoup
 
-soup = BeautifulSoup(login.src, 'lxml')
-print(soup.title)
+soup = BeautifulSoup(OLDlogin.src, 'lxml')
+#print(soup.title)
 
-#links = soup.find_all("a")
-#links = soup.find_all("h6")
+links = soup.find_all('div', {'class':'date'})
 
-links = soup.find_all('div', class_= "event")
+#print(links)
 
-print(links)
-urls = []
+url=[]
+exact = []
 
-for div in links:
-    div.find('a')['href']
-    print(div.text)
+for aTag in links:
+    hrefTag = aTag.find('a')
+    url.append(hrefTag.get('href'))
 
-    #if div is not None and 'href' in div.attrs:
-     #   asd = div.get('href')
-      #  urls.append(asd)
-    
+for num in url:
+    if num not in exact:
+        exact.append(num)
 
-
-#for link in links:
- #   if "Dashboard" in link.text:
-  #      courses = requests.get(link.attrs['href'])
-
-#src = courses.content
-
-#soup2 = BeautifulSoup(src, 'lxml')
-
-#print(urls)
+print(exact)
 

@@ -5,7 +5,7 @@ from cryptography.fernet import Fernet
 from robobrowser import RoboBrowser
 
 br = RoboBrowser()
-br.open("http://classroom.dwit.edu.np/my/")
+br.open("http://classroom.dwit.edu.np")
 form = br.get_form()
 
 #decrypt
