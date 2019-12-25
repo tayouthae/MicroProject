@@ -3,8 +3,13 @@ import OLDlogin
 import requests
 from bs4 import BeautifulSoup
 
-soup = BeautifulSoup(OLDlogin.src, 'lxml')
+src = OLDlogin.loginPart()
+
+soup = BeautifulSoup(src, 'lxml')
 #print(soup.title)
+
+user = soup.find('span', {'class':'usertext mr-1'})
+print(user.text)
 
 links = soup.find_all('div', {'class':'date'})
 

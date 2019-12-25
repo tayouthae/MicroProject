@@ -1,26 +1,19 @@
+import OLDlogin
 import bs4_parsing
 import re
-import config
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup   
+    
+count = len(bs4_parsing.exact)
 
-from robobrowser import RoboBrowser
+for i in range(count):
 
-def loginPart(url):
-
-    br = RoboBrowser()    
-    br.open(url)
-    form = br.get_form()
-
-    form['username']= config.username
-    form['password']= config.password
-    br.submit_form(form)
-
-    src = str(br.parsed())
+    src = OLDlogin.loginPart(bs4_parsing.exact[i])
     
     soup = BeautifulSoup(src, 'lxml')
 
     header = soup.find('div',{'class':'eventlist my-1'})
 
+    print("\n")
     for names in header.find_all('h3'):
         print(names.text)
 
@@ -35,13 +28,7 @@ def loginPart(url):
             continue
         else:
             print(names.text)
-
-
-count = len(bs4_parsing.exact)
-
-for i in range(count):
-    
-    loginPart(bs4_parsing.exact[i])
+    print("\n")
     
     
 
