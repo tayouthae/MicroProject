@@ -9,7 +9,8 @@ soup = BeautifulSoup(src, 'lxml')
 #print(soup.title)
 
 user = soup.find('span', {'class':'usertext mr-1'})
-print(user.text)
+userName = user.text
+print(userName)
 
 links = soup.find_all('div', {'class':'date'})
 

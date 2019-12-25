@@ -1,0 +1,1 @@
+{"0": {"header": "Assignment 2 is due", "paragraph": "Please do read this journal on \"The Role of Responsive Design in Web Development\" and write a review of this paper using IEEE format.", "aTag 0": "Monday, 30 December", "aTag 1": "CSC-318: Web Technology"}, "UserName": "Tayouth   Malla"}
