@@ -5,13 +5,10 @@ from bs4 import BeautifulSoup
 
 from robobrowser import RoboBrowser
 
-br = RoboBrowser()
+def loginPart(url):
 
-count = len(bs4_parsing.exact)
-
-for i in range(count):
-    
-    br.open(bs4_parsing.exact[i])
+    br = RoboBrowser()    
+    br.open(url)
     form = br.get_form()
 
     form['username']= config.username
@@ -22,10 +19,31 @@ for i in range(count):
     
     soup = BeautifulSoup(src, 'lxml')
 
-    header = soup.find_all('div',{'class':'eventlist my-1'})
+    header = soup.find('div',{'class':'eventlist my-1'})
 
-    for names in header:
-        Text = names.find('h3')
-        print(Text.get_text())
-        Text2 = names.find('a')
-        print(Text2.get_text())
+    for names in header.find_all('h3'):
+        print(names.text)
+
+    try:
+        for names in header.find_all('p'):
+            print(names.text)
+    except:
+        print("No paragraph")
+        
+    for names in header.find_all('a'):
+        if "activity" in names.text:
+            continue
+        else:
+            print(names.text)
+
+
+count = len(bs4_parsing.exact)
+
+for i in range(count):
+    
+    loginPart(bs4_parsing.exact[i])
+    
+    
+
+
+
